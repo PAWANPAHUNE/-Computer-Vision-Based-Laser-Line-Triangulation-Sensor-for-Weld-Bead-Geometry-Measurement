@@ -1,0 +1,6 @@
+# Serve only on this Mac (the camera feed is not exposed to the network).
+[server]
+address = "localhost"
+
+[browser]
+gatherUsageStats = false

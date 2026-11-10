@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297.0mm" height="210.0mm" viewBox="0 0 297.0 210.0">
+<rect x="0" y="0" width="297.0" height="210.0" fill="white"/>
+<rect x="98.5000" y="10.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="118.5000" y="10.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="138.5000" y="10.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="158.5000" y="10.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="178.5000" y="10.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="108.5000" y="20.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="128.5000" y="20.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="148.5000" y="20.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="168.5000" y="20.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="188.5000" y="20.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="98.5000" y="30.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="118.5000" y="30.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="138.5000" y="30.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="158.5000" y="30.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="178.5000" y="30.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="108.5000" y="40.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="128.5000" y="40.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="148.5000" y="40.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="168.5000" y="40.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="188.5000" y="40.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="98.5000" y="50.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="118.5000" y="50.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="138.5000" y="50.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="158.5000" y="50.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="178.5000" y="50.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="108.5000" y="60.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="128.5000" y="60.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="148.5000" y="60.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="168.5000" y="60.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="188.5000" y="60.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="98.5000" y="70.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="118.5000" y="70.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="138.5000" y="70.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="158.5000" y="70.0000" width="10.0000" height="10.0000" fill="black"/>
+<rect x="178.5000" y="70.0000" width="10.0000" height="10.0000" fill="black"/>
+<text x="98.50" y="86.00" font-family="Helvetica" font-size="3.2">Inner corners: 9 x 6   Squares: 10 x 7   Square size: 10 mm</text>
+<text x="98.50" y="90.50" font-family="Helvetica" font-size="3.2">PRINT AT 100% / ACTUAL SIZE. Turn OFF 'Fit to page'. Check: the bar below must measure exactly 100 mm.</text>
+<rect x="98.50" y="96.00" width="100.0" height="1.2" fill="black"/>
+<rect x="98.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="108.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="118.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="128.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="138.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="148.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="158.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="168.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="178.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="188.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<rect x="198.35" y="94.00" width="0.3" height="3.2" fill="black"/>
+<text x="200.50" y="97.50" font-family="Helvetica" font-size="3.2">100 mm</text>
+</svg>

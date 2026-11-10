@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "software": {
+    "name": "laser_triangulation_weld_measurement",
+    "version": "1.0.0",
+    "opencv": "5.0.0",
+    "numpy": "2.5.4",
+    "python": "3.12.10"
+  },
+  "created_utc": "2026-11-09T20:19:52+00:00",
+  "camera": {
+    "status": "valid",
+    "calibrated_utc": "2026-11-09T20:19:52+00:00",
+    "image_width": 1280,
+    "image_height": 800,
+    "camera_matrix": [
+      [
+        1000.4657290692948,
+        0.0,
+        638.6003695112046
+      ],
+      [
+        0.0,
+        1000.3807069008734,
+        399.8947475180371
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "dist_coeffs": [
+      -0.11778569663996107,
+      0.03056139602240874,
+      0.0005029613435615923,
+      -0.0005344346306446853,
+      0.043946102608915225
+    ],
+    "distortion_model": "opencv_k1_k2_p1_p2_k3",
+    "reprojection_error_px": 0.15302008138166925,
+    "per_view_errors_px": [
+      0.1860811710357666,
+      0.17212995886802673,
+      0.17692099511623383,
+      0.1839783638715744,
+      0.17984631657600403,
+      0.14092452824115753,
+      0.0985138788819313,
+      0.08740868419408798,
+      0.13903382420539856,
+      0.1276426911354065,
+      0.1270657479763031,
+      0.16874642670154572,
+      0.17244160175323486,
+      0.15934132039546967,
+      0.14473804831504822,
+      0.13919049501419067
+    ],
+    "num_views": 16,
+    "view_names": [
+      "view_00",
+      "view_01",
+      "view_02",
+      "view_03",
+      "view_04",
+      "view_05",
+      "view_06",
+      "view_07",
+      "view_08",
+      "view_09",
+      "view_10",
+      "view_11",
+      "view_12",
+      "view_13",
+      "view_14",
+      "view_15"
+    ],
+    "coverage_cells_of_9": 9,
+    "tilt_range_deg": 30.317158366465275,
+    "checkerboard": {
+      "inner_corners_cols": 9,
+      "inner_corners_rows": 6,
+      "square_size_mm": 12.0
+    }
+  },
+  "laser_plane": {
+    "status": "valid",
+    "calibrated_utc": "2026-11-09T20:19:52+00:00",
+    "method": "checkerboard_pnp_ray_plane_intersection",
+    "coefficients": [
+      0.9399881949782654,
+      -0.00027916672708857806,
+      0.3412068512903003,
+      -55.04047405738326
+    ],
+    "equation": "a*X + b*Y + c*Z + d = 0 (camera frame, mm, |(a,b,c)| = 1, d <= 0)",
+    "rms_residual_mm": 0.00951056116704573,
+    "max_residual_mm": 0.026654049057086127,
+    "num_poses": 4,
+    "num_points": 1097,
+    "inlier_fraction": 0.9826800364630811,
+    "pose_spread_mm": 88.14708018727698,
+    "depth_range_mm": [
+      126.90090812937143,
+      224.07743210611125
+    ],
+    "per_pose_rms_mm": {
+      "pose_1": 0.006773901051986324,
+      "pose_2": 0.01336991773612599,
+      "pose_3": 0.008369814297248937,
+      "pose_4": 0.012281045091619433
+    },
+    "target": {
+      "type": "printed_checkerboard_on_flat_rigid_board",
+      "inner_corners_cols": 9,
+      "inner_corners_rows": 6,
+      "square_size_mm": 12.0
+    },
+    "camera_section_sha256": "f80c4024ace9975afca2290c4bd0bda5e6519ca28f914834453492064dcca408"
+  },
+  "hardware": {
+    "fixture_id": "synthetic_rig",
+    "camera_tilt_setting_deg": 20.0,
+    "notes": "",
+    "camera_model": "Arducam UC-852 Rev.A (USB)"
+  },
+  "updated_utc": "2026-11-09T20:19:52+00:00",
+  "integrity_sha256": "8d794821eb24e7f6fa361a349e63f7e5951ba602bc67ec483a820a8e2c62d6bf"
+}

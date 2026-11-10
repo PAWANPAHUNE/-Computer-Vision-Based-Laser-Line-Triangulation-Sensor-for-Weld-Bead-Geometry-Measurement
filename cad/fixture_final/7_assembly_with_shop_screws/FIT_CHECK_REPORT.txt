@@ -1,0 +1,19 @@
+FIT CHECK - shop screws, nuts, washers and hose clamps on fixture v3 with the printed angle plates
+Each part placed in its installed position and intersected with the real part geometry (0 = fits).
+
+PASS camera tilt  0 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt  5 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt 10 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt 15 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt 20 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt 25 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt 30 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt 35 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt 40 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS camera tilt 45 deg: 4x M4x16 through angle plates, nuts in yoke pockets: no collisions [0.0, 0.0, 0.0, 0.0, 0.0], screw 2.5 mm past nut
+PASS clamp block: 4x M4x16 from below, nuts in slots: no collisions, tip 1.8 mm past nut, 5.8 mm short of hole end
+PASS laser bar: 2x M3x25, nuts in rear pockets: no collisions, tip 3.3 mm past nut
+PASS camera: 4x M3x8 thread into the posts (core clear, tip 1.1 mm above pilot bottom)
+PASS hose clamp band through slot at z=25: wraps block + 20 mm neck without collision
+PASS hose clamp band through slot at z=45: wraps block + 20 mm neck without collision
+RESULT: ALL PASS

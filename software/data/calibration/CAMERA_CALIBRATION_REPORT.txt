@@ -1,0 +1,49 @@
+CAMERA CALIBRATION REPORT  -  round 2, 2026-11-05
+================================================
+Camera      : Arducam OV9782 USB Camera (UC-852), 1280 x 800, focus locked
+Result file : data/calibration/calibration.json   (camera section; status VALID)
+Photos      : photos/1_checkerboard/ (57 used)  -  13 left out, see photos/1_checkerboard_NOT_USED/WHY.txt
+Board       : 9 x 6 squares (8 x 5 inner corners), stiff, flat and tilted on a book
+
+RESULT
+  fx = 939.6 px     fy = 941.9 px      (focal length ~2.8 mm at 3 um pixels = a standard 2.8 mm M12 lens)
+  cx = 689.0 px     cy = 357.0 px      (image centre is 640, 400)
+  distortion k1 k2 p1 p2 k3 = 0.0549  0.0760  0.0023  0.0063  0  (k3 held at 0, config fix_k3: true)
+
+QUALITY (original strict limits, NOT relaxed)
+  Reprojection error : 0.467 px   (limit 1.0 px)                  PASS
+  Board tilt range   : 4.9 - 35.9 deg = 31.0 deg (limit 15 deg)  PASS
+  Image coverage     : 9 of 9 areas (limit 6)                     PASS
+  Number of photos   : 57 (minimum 12, recommended 20)            PASS
+  Stability check    : calibrating on half of the photos and testing on the other half
+                       gives 0.44 px on the unseen photos; fx of the two halves 931 / 947 px.
+
+COMPARISON WITH ROUND 1 (board flat on the floor, paper bent, no tilt)
+  Round 1 gave fx = 1254 px, cy = 241 px, error 1.48 px - accepted only with relaxed limits.
+  Those numbers were wrong (a flat-only set cannot separate focal length from distance).
+  Round 1 is kept only as calibration_ROUND1_OLD_relaxed_limits.json.bak - do not use it.
+
+STILL OPEN
+  1. Checkerboard square size not measured (25 mm placeholder). It does NOT change the
+     values above, but must be measured before the laser-plane calibration.
+  2. Laser-plane calibration (needs the assembled fixture + laser OFF/ON photos):
+       python scripts/capture_photos.py --mode laser --camera 0
+  3. Then set calibration.enabled: true in config/config.yaml for millimetre results.
+  If the lens focus is ever turned, this camera calibration must be redone.
+
+
+LASER-PLANE CALIBRATION  -  2026-11-06
+======================================
+Photos      : photos/2_laser_plane/ (6 poses, laser OFF/ON pairs); pose_05 left out (see photos/2_laser_plane_NOT_USED/WHY.txt)
+Setup       : fixture v3 on the stand, ~59 cm above the floor; laser rotated so the line is perpendicular to the
+              camera-laser direction (before that a 50 mm box moved the line only 2 px, now 8.8 px)
+Result      : plane a,b,c,d = -0.9287, 0.3292, -0.1708, -56.65  (camera frame, mm)
+              camera centre to laser plane = 56.6 mm  (CAD design: 55 mm)
+Quality     : fit RMS 0.36 mm, max 1.12 mm, 6 poses, 100 % inliers, spread 48 mm
+              leave-one-out: each pose predicted from the other five to 0.3 - 0.6 mm RMS
+Check       : 50 mm box (photos/4_weld/weld_03.png): box top 50.4 mm above the floor by direct triangulation;
+              the app reports height 52.0 mm, width along the laser line 90.6 mm.
+Expected accuracy at this distance: about +-2 mm in height (1 px of line movement = ~5.7 mm).
+Settings changed for box measurement (config/config.yaml, all commented): profile_axis image_rows,
+boundary_fraction 0.5, peak_smoothing_points 11, max_depth_mm 750, calibration.enabled true.
+DO NOT move the camera, laser or lens focus; otherwise this calibration is invalid.

@@ -1,0 +1,136 @@
+# =====================================================================
+# Laser-triangulation weld bead measurement: MAIN CONFIGURATION
+# This file is the single source of truth for the operating mode.
+#
+#   calibration.enabled: false  -> UNCALIBRATED mode (pixels only)
+#   calibration.enabled: true   -> CALIBRATED mode (mm, only if the
+#                                  calibration file passes validation)
+#
+# The application NEVER switches mode by itself. After editing this file,
+# press "Reload Configuration" in the sidebar (or restart the app).
+# Units are written in every key name (_mm, _deg, _px, _um).
+# null means "unknown". Do not replace null with a guess.
+# =====================================================================
+
+calibration:
+  enabled: true
+  calibration_file: "data/calibration/calibration.json"
+  # In calibrated mode: true = block ALL processing until the calibration is
+  # valid; false = allow pixel-space processing while mm results stay blocked.
+  require_valid_calibration: true
+  # Uncalibrated mode only. true = allow clearly-labelled EXPERIMENTAL mm
+  # estimates (reference-length scale or nominal geometry model).
+  allow_uncalibrated_metric_estimates: false
+  # Rescale intrinsics when the image size differs from the calibration size.
+  # Only valid when the camera delivers the SAME field of view scaled
+  # (binning), never for a crop. Keep false unless you have verified this.
+  allow_intrinsic_resolution_scaling: false
+
+  # Printed checkerboard. Inner corners = squares - 1 in each direction.
+  # The supplied PDF (assets/checkerboard_9x6_25mm.pdf) has 10 x 7 squares.
+  # YOUR printed board (seen in photos/1_checkerboard): 9 x 6 squares = 8 x 5 inner corners.
+  checkerboard:
+    inner_corners_cols: 8
+    inner_corners_rows: 5
+    square_size_mm: 25.0   # MEASURED 2026-11-06: 4 squares = 100 mm
+
+  camera_intrinsics:
+    min_views: 12                  # minimum accepted checkerboard views
+    recommended_views: 20          # the UI asks for this many
+    max_reprojection_error_px: 1.0 # strict limit restored 2026-11-05 (second calibration: 0.47 px)
+    min_coverage_cells: 6          # of a 3 x 3 image grid touched by the board
+    min_tilt_range_deg: 15.0       # strict limit restored 2026-11-05 (second calibration: 31 deg)
+    fix_k3: true                   # 3rd radial distortion term held at 0 (board did not reach the image corners)
+
+  laser_plane:
+    min_poses: 3                   # distinct board positions with the laser on it
+    min_points_per_pose: 40        # laser centre points on the board per pose
+    max_plane_rms_mm: 0.5          # plane fit rejected above this RMS residual
+    max_pose_line_rms_mm: 1.0      # each pose's laser points must form a line
+    line_inlier_threshold_mm: 1.5  # stray points farther than this from the line are ignored (board edge)
+    min_line_inlier_fraction: 0.75 # ...but at least this share must lie on the line, else the pose is rejected
+    min_pose_spread_mm: 15.0       # poses must be spread across the laser plane
+    max_pnp_reprojection_error_px: 2.0
+    region_margin_mm: 5.0          # laser points accepted this far outside the squares
+    min_camera_to_plane_distance_mm: 5.0
+
+  validation:
+    max_flat_plate_rms_mm: 0.5     # flat-plate check limit
+
+camera:
+  backend: "auto"          # auto | avfoundation | default
+  # Index 0 is often the MacBook's built-in camera. Use "Scan Cameras".
+  device_index: 0          # Arducam OV9782 = index 0 on this Mac (1920x1080 = MacBook camera)
+  resolution:
+    width: 1280            # requested size; the camera may deliver another
+    height: 800
+  warmup_frames: 5
+  preview_seconds: 10
+
+  # Optical specifications: fill ONLY from verified documentation.
+  focal_length_mm: null
+  sensor_width_mm: null
+  sensor_height_mm: null
+  pixel_pitch_um: null
+
+geometry:
+  # Fill after measuring the assembled fixture. See HARDWARE_PARAMETERS.md.
+  camera_to_laser_baseline_mm: null   # optical centre to laser plane, along the fixture plate
+  camera_pitch_deg: null              # camera tilt toward the laser (yoke angle)
+  camera_yaw_deg: 0.0                 # sideways look (rotation about the baseline axis)
+  camera_roll_deg: 0.0                # rotation about the optical axis
+  laser_plane_angle_deg: null         # laser beam tilt toward the camera, 0 = perpendicular to plate
+  working_distance_mm: null           # plate to workpiece along the laser beam
+
+fixture:
+  # Stored inside the calibration file. If these change, the calibration
+  # becomes invalid (the camera or laser has physically moved).
+  fixture_id: "welding_sensor_fixture_v3"
+  camera_tilt_setting_deg: null
+  notes: ""
+
+laser:
+  type: "line"
+  color: "red"
+  detection_method: "red_channel_difference"   # red_channel_difference | hsv_red | red_channel_tophat
+  threshold: 30                 # score 0-255; lower finds weaker lines, raises noise
+  minimum_component_area: 5     # px; smaller red blobs are ignored
+  smoothing_window: 5           # points; odd; median filter that keeps peaks
+  blur_kernel: 3                # px; odd; 1 disables
+  max_stripe_width_px: 40       # wider red runs are treated as glare
+  outlier_threshold_px: 6.0     # jump vs. both neighbours that marks an outlier
+  saturation_level: 250         # red value treated as saturated (white core)
+
+measurement:
+  reference_surface: "local_background"  # local_background | global_line
+  profile_axis: "image_rows"             # auto | image_columns | image_rows. Your line runs TOP->BOTTOM in the picture;
+                                         # "auto" was confused by the reddish wall (2026-11-06)
+  bead_direction: "auto"                 # pixel mode: auto | positive | negative
+  minimum_confidence: 0.5
+  boundary_fraction: 0.5       # edge = height falls to this fraction of the peak. 0.5 = straight-sided objects
+                               # (boxes, steps); use 0.05 for weld beads (edge at the toe)
+  min_bead_height_px: 3.0
+  min_bead_height_mm: 0.2
+  peak_smoothing_points: 11    # height ignores single-point noise spikes (1 = off)
+  min_depth_mm: 20.0           # triangulated points outside this depth are rejected
+  max_depth_mm: 750.0          # your fixture is ~600 mm from the floor; farther points (the wall) are ignored
+  min_ray_plane_angle_deg: 2.0 # rays this close to parallel with the laser plane are rejected
+
+output:
+  directory: "outputs"
+  save_debug_images: true
+  save_profiles: true
+  save_json: true
+
+# Where each physical value came from. Allowed: verified | measured | estimated | unknown
+parameter_sources:
+  camera.focal_length_mm: {source: unknown, note: "Lens not identified. Do not infer from the PCB."}
+  camera.sensor_width_mm: {source: unknown, note: "Sensor not verified for UC-852 Rev.A."}
+  camera.sensor_height_mm: {source: unknown, note: "Sensor not verified for UC-852 Rev.A."}
+  camera.pixel_pitch_um: {source: unknown, note: "Sensor not verified for UC-852 Rev.A."}
+  geometry.camera_to_laser_baseline_mm: {source: unknown, note: "Fixture v3 design value is 55 mm between camera centre and laser axis; measure after assembly."}
+  geometry.camera_pitch_deg: {source: unknown, note: "Set on the yoke; read the tick marks after locking."}
+  geometry.camera_yaw_deg: {source: estimated, note: "Fixture design is 0; not measured."}
+  geometry.camera_roll_deg: {source: estimated, note: "Fixture design is 0; not measured."}
+  geometry.laser_plane_angle_deg: {source: unknown, note: "Fixture v3 holds the laser perpendicular to the plate (design 0); not measured."}
+  geometry.working_distance_mm: {source: unknown, note: "Measure after assembly."}

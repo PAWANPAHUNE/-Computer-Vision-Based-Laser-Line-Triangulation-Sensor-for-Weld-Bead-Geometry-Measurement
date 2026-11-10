@@ -1,0 +1,56 @@
+VERIFICATION REPORT - welding sensor fixture v3 + printed hardware kit
+Generated 2026-11-04 by automated mesh checks (trimesh + manifold boolean engine).
+Each printed part was placed in its installed position on the real v3 part geometry and intersected with it.
+Overlap 0 = it fits without touching; 'seated'/'held' values > 0 = it really sits in its hole or slot when nudged.
+These are geometric checks of the CAD; fit on a real printer depends on that printer (see the test print in the guide).
+
+== 1. every printable file
+PASS base.stl                                                watertight=True bodies=1 zmin=0.000 size=[154.  70.  54.]
+PASS camera_yoke.stl                                         watertight=True bodies=1 zmin=0.000 size=[54.  54.  16.5]
+PASS arm_clamp.stl                                           watertight=True bodies=1 zmin=0.000 size=[46. 56. 46.]
+PASS laser_bar.stl                                           watertight=True bodies=1 zmin=0.000 size=[14. 30.  5.]
+PASS printed_hardware/stl/block_fork_rear.stl                watertight=True bodies=1 zmin=0.000 size=[13.   7.   3.3]
+PASS printed_hardware/stl/block_fork_side.stl                watertight=True bodies=1 zmin=0.000 size=[15.   7.   3.3]
+PASS printed_hardware/stl/block_pin.stl                      watertight=True bodies=1 zmin=0.000 size=[17.8  9.   3.8]
+PASS printed_hardware/stl/camera_pin.stl                     watertight=True bodies=1 zmin=0.000 size=[6.5 6.5 8.8]
+PASS printed_hardware/stl/laser_clip_size1.stl               watertight=True bodies=1 zmin=0.000 size=[27.5 35.7 14.6]
+PASS printed_hardware/stl/laser_clip_size2.stl               watertight=True bodies=1 zmin=0.000 size=[28.1 35.7 14.6]
+PASS printed_hardware/stl/laser_clip_size3.stl               watertight=True bodies=1 zmin=0.000 size=[28.6 35.7 14.6]
+PASS printed_hardware/stl/strap_long.stl                     watertight=True bodies=1 zmin=0.000 size=[273.  18.   7.]
+PASS printed_hardware/stl/strap_short.stl                    watertight=True bodies=1 zmin=0.000 size=[198.  18.   7.]
+PASS printed_hardware/stl/yoke_pin.stl                       watertight=True bodies=1 zmin=0.000 size=[14.6  9.   3.8]
+   (20 angle-plate files checked)
+== 2. camera tilt: pins + angle plates at all 10 angles
+PASS tilt  0: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 118 | key held in slot 2.66
+PASS tilt  5: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 118 | key held in slot 2.69
+PASS tilt 10: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 118 | key held in slot 2.80
+PASS tilt 15: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 118 | key held in slot 3.02
+PASS tilt 20: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 118 | key held in slot 3.29
+PASS tilt 25: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 118 | key held in slot 3.66
+PASS tilt 30: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 118 | key held in slot 4.12
+PASS tilt 35: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 110 | key held in slot 4.53
+PASS tilt 40: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 115 | key held in slot 4.87
+PASS tilt 45: overlaps [0.0, 0.0, 0.0, 0.0, 0.0] | plate seated 121 | key held in slot 5.11
+== 3. printed angle plates are the right hand (rotation, not mirror)
+PASS  0 deg RIGHT: printed file moved by a pure rotation matches the installed plate (100.0% overlap)
+PASS  0 deg LEFT : printed file moved by a pure rotation matches the installed plate (100.0% overlap)
+PASS 20 deg RIGHT: printed file moved by a pure rotation matches the installed plate (100.0% overlap)
+PASS 20 deg LEFT : printed file moved by a pure rotation matches the installed plate (100.0% overlap)
+PASS 45 deg RIGHT: printed file moved by a pure rotation matches the installed plate (100.0% overlap)
+PASS 45 deg LEFT : printed file moved by a pure rotation matches the installed plate (100.0% overlap)
+== 4. clamp block pins + forks, camera pins
+PASS block pins and forks: no overlaps
+PASS forks stop the block pins from pulling out
+PASS camera pins: press-fit grip 8.0 mm3 total (4 pins)
+== 5. laser clip (3 sizes)
+PASS size 1 (laser 10.6 mm): frame clears base, pad preloaded onto laser, clear after 0.6 mm spring travel
+PASS size 2 (laser 11.0 mm): frame clears base, pad preloaded onto laser, clear after 0.6 mm spring travel
+PASS size 3 (laser 11.4 mm): frame clears base, pad preloaded onto laser, clear after 0.6 mm spring travel
+== 6. strap
+PASS strap section 12.00 x 2.19 mm fits the 14 x 2.6 mm slot in the clamp block
+PASS strap passes the slot at 18 mm without touching (and is really inside it)
+PASS strap passes the slot at 38 mm without touching (and is really inside it)
+PASS pawl tip leaves 1.65 mm for the 2.2 mm strap -> engages 0.55 mm of the 0.8 mm teeth
+PASS pawl bending strain 2.1% (PETG/PLA safe below ~2.5%)
+
+RESULT: ALL PASS
